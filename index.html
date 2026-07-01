@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>员工知识库</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">知</span>
+        <div>
+          <p class="eyebrow">Internal Knowledge Base</p>
+          <h1>员工知识库</h1>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button" id="printBtn" type="button" title="打印当前文章">打印</button>
+        <button class="icon-button" id="sourceBtn" type="button" title="查看资料来源">资料来源</button>
+      </div>
+    </header>
+
+    <section class="workspace-hero" aria-label="知识库概览">
+      <img src="./assets/knowledge-hero.png" alt="员工培训资料桌面图">
+      <div class="hero-content">
+        <div>
+          <p class="eyebrow">威尔阳（武汉）信息技术有限公司</p>
+          <h2>从入职第一天到日常执行，把制度和流程放在一个入口。</h2>
+        </div>
+        <div class="hero-stats" id="quickStats"></div>
+      </div>
+    </section>
+
+    <main class="knowledge-layout">
+      <aside class="sidebar" aria-label="知识库导航">
+        <label class="search-box" for="searchInput">
+          <span aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="搜索制度、流程、模板">
+        </label>
+
+        <div class="side-section">
+          <div class="section-title">分类</div>
+          <div class="category-list" id="categoryList"></div>
+        </div>
+
+        <div class="side-section">
+          <div class="section-title">阅读状态</div>
+          <label class="toggle-row">
+            <input type="checkbox" id="unreadOnly">
+            <span>只看未读</span>
+          </label>
+        </div>
+
+        <div class="timeline-panel">
+          <div class="section-title">入职路径</div>
+          <div id="timelineList"></div>
+        </div>
+      </aside>
+
+      <section class="results-pane" aria-label="文章列表">
+        <div class="results-head">
+          <div>
+            <p class="eyebrow">Browse</p>
+            <h2 id="resultTitle">全部文章</h2>
+          </div>
+          <button class="ghost-button" id="resetBtn" type="button">清空筛选</button>
+        </div>
+        <div class="active-filters" id="activeFilters"></div>
+        <div class="article-list" id="articleList"></div>
+      </section>
+
+      <article class="reader-pane" id="readerPane" aria-live="polite"></article>
+    </main>
+  </div>
+
+  <dialog class="source-dialog" id="sourceDialog">
+    <div class="dialog-head">
+      <div>
+        <p class="eyebrow">Source Files</p>
+        <h2>资料来源</h2>
+      </div>
+      <button class="icon-button" id="closeSourceBtn" type="button" title="关闭">关闭</button>
+    </div>
+    <div id="sourceList" class="source-list"></div>
+  </dialog>
+
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
